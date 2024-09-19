@@ -1,0 +1,256 @@
+/* styles.css */
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('images/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Remove any overlay that might create faint boxes behind the cards */
+body::before {
+    display: none; /* Completely remove the overlay */
+}
+
+/* Navigation Bar */
+nav {
+    padding: 10px 0; /* Adjusted padding */
+    background: none; /* Remove previous background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Space between navigation tabs */
+    background-color: black; /* Black background behind all tabs */
+    padding: 10px 20px; /* Padding around the tabs */
+    border-radius: 25px; /* Rounded corners for the navigation container */
+}
+
+.navbar li {
+    /* No additional styles needed for list items */
+}
+
+.navbar a {
+    color: yellow; /* Yellow text for visibility against black background */
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px; /* Increased padding for larger clickable area */
+    border: 2px solid yellow; /* Yellow border around each tab */
+    border-radius: 25px; /* Rounded corners for the tabs */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    background-color: yellow; /* Yellow background on hover and active */
+    color: black; /* Black text for readability against yellow background */
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px); /* Adjusted based on navbar height */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Card Container */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px; /* Equal horizontal and vertical gaps */
+    max-width: 500px; /* Reduced max-width to make cards smaller */
+    width: 100%;
+}
+
+/* Individual Cards */
+.card {
+    position: relative;
+    overflow: hidden;
+    background: none; /* Remove any background */
+    border: none; /* Remove any border */
+    padding: 0; /* Remove any padding */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Change cursor to pointer on hover */
+    display: flex;
+    align-items: flex-start; /* Align items to start to accommodate text at top */
+    justify-content: center;
+}
+
+/* Hover Effect */
+.card:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15); /* Softer shadow on hover */
+}
+
+/* Card Images */
+.card-image {
+    width: 100%; /* Full width of the card */
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Rounded corners for images */
+}
+
+/* Logo Styling */
+.card-logo {
+    position: absolute;
+    top: 60%; /* Moved down to accommodate text */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px; /* Increased logo size */
+    height: 70px; /* Increased logo size */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    border-radius: 50%;
+    padding: 5px;
+    object-fit: contain; /* Ensure logo fits within the container */
+    z-index: 1; /* Ensure logo stays above card image */
+}
+
+/* Text Label Styling */
+.card-text {
+    position: absolute;
+    top: 20px; /* Moved text down slightly */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    color: black; /* Changed text color to black */
+    font-size: 20px; /* Increased font size */
+    text-align: center;
+    white-space: normal; /* Allow text to wrap */
+    max-width: 90%; /* Prevent text from overflowing the card */
+    z-index: 2; /* Ensure text appears above other elements */
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.7); /* Add text shadow for readability */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        min-height: auto; /* Allow content to adjust naturally */
+        padding: 10px;
+    }
+
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px; /* Reduced gap for smaller screens */
+        max-width: 450px; /* Further reduced max-width */
+    }
+
+    .card-logo {
+        width: 60px; /* Adjusted logo size for smaller screens */
+        height: 60px; /* Adjusted logo size for smaller screens */
+    }
+
+    .card-text {
+        font-size: 18px; /* Slightly smaller text */
+        padding: 4px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        grid-template-columns: 1fr; /* Single column layout on very small screens */
+        max-width: 300px; /* Further reduced max-width */
+    }
+
+    .card-image {
+        border-radius: 4px; /* Slightly rounded corners */
+    }
+
+    .card-logo {
+        width: 50px; /* Further increased logo size */
+        height: 50px; /* Further increased logo size */
+    }
+
+    .card-text {
+        font-size: 18px; /* Maintain readability */
+        padding: 4px 8px;
+        color: #fff; /* Maintain white text */
+        text-shadow: 1px 1px 2px rgba(255,255,255,0.7); /* Consistent text shadow */
+    }
+
+    .navbar {
+        gap: 15px; /* Slightly reduced gap for mobile */
+    }
+
+    .navbar a {
+        padding: 8px 16px; /* Reduced padding for mobile */
+        font-size: 16px; /* Slightly smaller text */
+    }
+}
+
+/* Additional Styling for Other Pages */
+
+/* Profile Picture Styling */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px auto;
+    display: block;
+}
+
+/* Project Image Styling */
+.project-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+}
+
+/* Gallery Styling */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.gallery img {
+    width: 200px;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* About, Contact, and Project Sections */
+.about, .contact, .project {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: transparent; /* Ensure transparency */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.about h1, .contact h1, .project h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.about ul, .contact ul, .project ul {
+    list-style: disc inside;
+    margin-left: 20px;
+}
